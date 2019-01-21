@@ -68,6 +68,7 @@ class Auth():
         password = input()
         self.password = password
         self.timestamp = datetime.now()
+
         password = [password for password in users_list if password['password'] == self.password
                                           and password['username'] == self.username]
         if not password:
