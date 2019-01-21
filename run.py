@@ -20,6 +20,7 @@ class Auth():
         pass
 
     def signup(self):
+
         print('Enter your username')
         username = input()
         self.username = username
