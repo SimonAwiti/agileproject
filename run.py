@@ -20,14 +20,6 @@ class Auth():
         pass
 
     def signup(self):
-        """user register
-
-        Keyword Arguments:
-            role {user} -- [all users registereing will automatically be users] (default: {'user'})
-
-        Returns:
-            [message] -- [successful registered]
-        """
 
         print('Enter your username')
         username = input()
