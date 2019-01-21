@@ -53,5 +53,5 @@ class Auth():
         }
         
         users_list.append(user_dict)
-        print("Successsfully registered in") 
+        print("Successsfully registered") 
         return True   
