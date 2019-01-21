@@ -55,3 +55,6 @@ class Auth():
         users_list.append(user_dict)
         print("Successsfully registered") 
         return True   
+
+registration = Auth()
+registration.signup()
