@@ -1,1 +1,60 @@
- 
+from datetime import datetime
+users_list = [
+    {       
+            "userid":0,
+            "username":'admin',
+            "password":'admin',
+            "role":'admin'
+    }
+]
+comments = [
+    {
+
+    }
+]
+user = []
+
+class Auth():
+    def __init__(self):
+        pass
+        
+    def signup(self):
+        """user register
+                
+        Keyword Arguments:
+            role {user} -- [all users registereing will automatically be users] (default: {'user'})
+        
+        Returns:
+            [message] -- [successful registered]
+        """
+
+        print('Enter your username')
+        username = input()
+        self.username = username
+        name = [name for name in users_list if name['username'] == self.username]
+        if name:
+            return 'User already exist'
+        print('Enter your password')
+        password = input()
+        self.password = password
+        print('Please Password again')
+        confirm = input()
+        self.confirm = confirm
+        if self.password != self.confirm:
+            print('Passwords should match')
+            print("PLease try agAIN")
+            return self.signup()
+        self.role = 'user'
+        user_dict = {
+            "userid": len(users_list) + 1,
+            "username":self.username,
+            "password":self.password,
+            "role":self.role
+        }
+        
+        users_list.append(user_dict)
+        print("Successsfully registered") 
+        return True   
+
+registration = Auth()
+registration.signup()
