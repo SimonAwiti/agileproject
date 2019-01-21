@@ -71,7 +71,16 @@ class Auth():
         print("logged in at {}".format(self.timestamp))
         return True
 
+class AddComment():
+    def create_comment(self):
+        print("Write your comment")
+        comment = input()
+        self.comment = comment
+        print("Your comment is {} and your name is {}".format(self.comment, logged_in_users[0]))
+
 
 registration = Auth()
 registration.signup()
 registration.login()
+add_comment = AddComment()
+add_comment.create_comment()
