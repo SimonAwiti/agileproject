@@ -1,10 +1,10 @@
 from datetime import datetime
 users_list = [
-    {       
-            "userid":0,
-            "username":'admin',
-            "password":'admin',
-            "role":'admin'
+    {
+        "userid": 0,
+        "username": 'admin',
+        "password": 'admin',
+        "role": 'admin'
     }
 ]
 comments = [
@@ -12,18 +12,19 @@ comments = [
 
     }
 ]
-user = []
+logged_in_users = []
+
 
 class Auth():
     def __init__(self):
         pass
-        
+
     def signup(self):
         """user register
-                
+
         Keyword Arguments:
             role {user} -- [all users registereing will automatically be users] (default: {'user'})
-        
+
         Returns:
             [message] -- [successful registered]
         """
@@ -37,7 +38,7 @@ class Auth():
         print('Enter your password')
         password = input()
         self.password = password
-        print('Please Password again')
+        print('Please enter your password again')
         confirm = input()
         self.confirm = confirm
         if self.password != self.confirm:
@@ -47,14 +48,38 @@ class Auth():
         self.role = 'user'
         user_dict = {
             "userid": len(users_list) + 1,
-            "username":self.username,
-            "password":self.password,
-            "role":self.role
+            "username": self.username,
+            "password": self.password,
+            "role": self.role
         }
-        
+
         users_list.append(user_dict)
-        print("Successsfully registered") 
-        return True   
+        print("Successfully registered")
+
+        return True
+
+    def login(self):
+        """user login"""
+
+        print('Enter your username')
+        username = input()
+        self.username = username
+        print('Enter your password')
+        password = input()
+        self.password = password
+        self.timestamp = datetime.now()
+
+        password = [password for password in users_list if password['password'] == self.password
+                                          and password['username'] == self.username]
+        if not password:
+            print( 'Invalid password or username')
+            return self.login()
+        self.logged_in = True
+        logged_in_users.append(self.username)
+        print("logged in at {}".format(self.timestamp))
+        return True
+
 
 registration = Auth()
 registration.signup()
+registration.login()
